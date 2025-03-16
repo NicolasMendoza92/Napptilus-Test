@@ -1,11 +1,13 @@
 
 @use 'globals';
 @use 'components/navbar';
+@use 'components/products-grid';
 @use 'components/product-card';
 @use 'components/product-detail';
 @use 'components/cart';
 @use 'components/cart-indicator';
 @use 'components/similar-products';
+@use 'components/carousel';
 @use 'components/success';
 @use 'components/search';
 @use 'components/skeleton';

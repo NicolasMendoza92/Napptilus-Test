@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "../hooks/cartStore";
-
+import { getOrderDate, getRandonNumberOrder } from "../utils/utils";
 
 export default function Cart() {
   const router = useRouter();
@@ -13,34 +13,27 @@ export default function Cart() {
     (total, item) => total + item.price * item.quantity,
     0
   );
-  const [isPending, startTransition] = useTransition();
-  const [isProcessing, setIsProcessing] = useState(false)
+
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const handleCheckout = () => {
-    startTransition(() => {
-      const orderNumber = `ORD-${Math.floor(Math.random() * 1000000)
-        .toString()
-        .padStart(6, "0")}`;
+    const orderNumber = getRandonNumberOrder()
+    const orderDate =  getOrderDate()
 
-      const orderDetails = {
-        orderNumber,
-        items: cartItems,
-        total: totalPrice,
-        date: new Date().toLocaleDateString("es-ES", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        }),
-      };
+    const orderDetails = {
+      orderNumber,
+      items: cartItems,
+      total: totalPrice,
+      date: orderDate,
+    };
 
-      localStorage.setItem("lastOrder", JSON.stringify(orderDetails));
-      setIsProcessing(true)
-      setTimeout(() => {
-        clearCart();
-        setIsProcessing(true)
-        router.push("/cart/success");
-      }, 2000);
-    });
+    localStorage.setItem("lastOrder", JSON.stringify(orderDetails));
+    setIsProcessing(true);
+    setTimeout(() => {
+      clearCart();
+      setIsProcessing(true);
+      router.push("/cart/success");
+    }, 2000);
   };
 
   return (
@@ -85,9 +78,7 @@ export default function Cart() {
                       <div>
                         <button
                           className="cart-item__remove"
-                          onClick={() =>
-                            removeItem(item.cartId)
-                          }
+                          onClick={() => removeItem(item.cartId)}
                         >
                           Eliminar
                         </button>

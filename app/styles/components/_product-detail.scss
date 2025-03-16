@@ -1,42 +1,43 @@
 @use '../globals' as *;
 
-.back-button-container {
+.product-detail-content {
+  padding: 1rem;
+
+  @media (min-width: 1028px) {
+    padding: 0rem 3rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 0rem 6rem;
+  }
+}
+
+.back-button {
   padding: 0.5rem ;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   position: relative;
 
-  @media (min-width: 768px) {
-    padding: 0.75rem;
-  }
-  
-  @media (min-width: 1024px) {
-    padding: 0.75rem 4.25rem;
-  }
-  
-  @media (min-width: 1280px) {
-    padding: 0.75rem 6.25rem;
+  &__button {
+    display: flex;
+    align-items: center;
+    top: 4rem;
+    left: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: $text-secondary;
+    transition: opacity 0.3s;
+    z-index: 10;
+    
+    &:hover {
+      opacity: 0.7;
+    }
   }
 } 
 
-.back-button {
-  display: flex;
-  align-items: center;
-  top: 4rem;
-  left: 1rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  color: $text-secondary;
-  transition: opacity 0.3s;
-  z-index: 10;
-  
-  &:hover {
-    opacity: 0.7;
-  }
-}
 
 .product-detail {
   
@@ -46,7 +47,7 @@
     
     @media (min-width: 960px) {
       grid-template-columns: 1fr 1fr;
-      padding: 2rem;
+      padding: 1rem;
     }
   }
   
@@ -58,8 +59,6 @@
   &__image {
     object-fit:contain ;
     padding: 0rem;
-    width: 510px;
-    height: 630px;
 
     @media (max-width: 768px) {
       padding: 0rem 8rem 0rem 2rem ;

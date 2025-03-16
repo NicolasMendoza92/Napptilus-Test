@@ -1,13 +1,12 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { useTransitionRouter } from "next-view-transitions";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
 export default function SearchForm() {
   const searchParams = useSearchParams();
-  const router = useTransitionRouter();
+  const router = useRouter();
   const [search, setSearch] = useState(searchParams.get("search") || "");
 
   const updateSearchParams = useCallback(
@@ -34,8 +33,9 @@ export default function SearchForm() {
   };
 
   return (
-    <div className="search-area">
-      <form>
+
+    <div>
+      <form className="search-area">
         <div className="search-container">
           <input
             type="text"

@@ -1,10 +1,10 @@
 "use client"
 
-import "../../styles/components/_success.scss"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { CheckCircle } from "lucide-react"
+import LoadingSpinner from "../../components/LoadingSpinner"
 
 export default function SuccessPage() {
   const router = useRouter()
@@ -20,7 +20,7 @@ export default function SuccessPage() {
   }, [router])
 
   if (!orderDetails) {
-    return <div className="loading">Loading...</div>
+    return <LoadingSpinner/>
   }
 
   const { orderNumber, items, total, date } = orderDetails

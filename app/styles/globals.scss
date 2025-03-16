@@ -6,7 +6,7 @@ $text-white: #ffffff;
 $text-secondary: #666666;
 $border-color: #cccc;
 $border-dark: #000000;
-// Mixins
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -40,7 +40,6 @@ a {
   text-decoration: none;
 }
 
-// Layout
 .container {
   max-width: 1920px;
   margin: auto;
@@ -80,10 +79,17 @@ a {
   }
 }
 
+.main-layout {
+  margin-top: var(--navbar-height, 5rem) 
+}
 
 .main-content {
-  margin-top:12rem;
+  margin-top:10rem;
   padding: 1rem;
+
+  @media (min-width: 768px) {
+    padding: 1rem 1rem;
+  }
 
   @media (min-width: 1028px) {
     padding: 0rem 3rem;
@@ -92,30 +98,6 @@ a {
   @media (min-width: 1280px) {
     padding: 0rem 6rem;
   }
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-bottom: 4rem;
-  gap:0px;
-  
-  
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  @media (min-width: 1280px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  @media (min-width: 1560px) {
-    grid-template-columns: repeat(5, 1fr);
-  }
-  
 }
 
 .loading-spinner {
@@ -132,5 +114,59 @@ a {
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+  }
+}
+
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $background-color;
+  padding: 2rem;
+  text-align: center;
+  
+  &__container {
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: $text-color;
+    
+    @media (min-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+  
+  &__message {
+    font-size: 0.875rem;
+    color: $text-secondary;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+  
+  &__button {
+    padding: 0.75rem 2rem;
+    background-color: $text-color;
+    color: white;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+  
+  &__icon {
+    margin-bottom: 2rem;
+    opacity: 0.2;
   }
 }

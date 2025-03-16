@@ -4,16 +4,13 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  outline: 0.5px solid #4c4c4c; 
+  outline: 0.5px solid #000000; 
   transition: transform 0.5s;
   position: relative;
   overflow: hidden;
   padding: 1rem;
   background-color: $background-color;
 
-  &--border {
-    border: 0.25px solid $border-dark; 
-  }
   
   &:hover {
     .product-card__overlay {

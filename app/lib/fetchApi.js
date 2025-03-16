@@ -1,5 +1,12 @@
 import axios from "axios";
-import { ApiError } from "./errors";
+export class ApiError extends Error {
+  constructor(message, status, data) {
+    super(message);
+    this.name = "ApiError";
+    this.status = status;
+    this.data = data;
+  }
+}
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -19,16 +26,14 @@ const fetchApi = async (url, method = "GET", data = null) => {
     }
 
     const response = await axios(config);
-    console.log( 'response axios status', response.status)
-    console.log( 'response axios', response.data)
 
-    // if (response.status >= 400) {
-    //   throw new ApiError(
-    //     `Request failed with status code ${response.status}`,
-    //     response.status,
-    //     response.data
-    //   );
-    // }
+    if (response.status >= 400) {
+      throw new ApiError(
+        `Request failed with status code ${response.status}`,
+        response.status,
+        response.data
+      );
+    }
 
     return response.data;
   } catch (error) {

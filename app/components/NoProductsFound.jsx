@@ -10,8 +10,8 @@ export default function NoProductsFound({ searchTerm }) {
       <h2 className="no-products__title">No products found</h2>
       <p className="no-products__message">
         {searchTerm
-          ? `We couldn't find any products matching "${searchTerm}". Try a different search term or browse our collection.`
-          : "No products are currently available. Please check back later."}
+          ? `Not found any products matching "${searchTerm}". Try a different search term.`
+          : "No products are currently available."}
       </p>
       <div className="no-products__actions">
         <Link href="/">
