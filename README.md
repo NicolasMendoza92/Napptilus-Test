@@ -46,7 +46,7 @@ El proyecto sigue una arquitectura modular y desacoplada:
 
 * services/: Contiene la lógica y las llamadas al backend. Las peticiones HTTP se manejan a través de fetchApi.js en lib/, utilizando axios.
 
-* lib/: Incluye utilidades genéricas como fetchApi.js para manejar las solicitudes a la API.
+* lib/: Incluye utilidades genéricas como fetchApi.js para manejar las solicitudes a la API y guardado de las consultas en unestable_cache.
 
 * hooks/: Contiene cartStore.js, un store global manejado con Zustand para gestionar el carrito sin re-renderizaciones innecesarias.
 
