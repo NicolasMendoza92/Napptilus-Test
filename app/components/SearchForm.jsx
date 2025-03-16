@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+import { X } from "lucide-react";
 
 export default function SearchForm() {
   const searchParams = useSearchParams();
@@ -19,7 +20,7 @@ export default function SearchForm() {
       }
       router.push(`?${params.toString()}`);
     },
-    [searchParams, router]
+    [searchParams, router],
   );
 
   const debouncedUpdateSearchParams = useDebouncedCallback((newSearch) => {
@@ -32,18 +33,34 @@ export default function SearchForm() {
     debouncedUpdateSearchParams(newSearch);
   };
 
-  return (
+  const handleClearSearch = () => {
+    setSearch("");
+    updateSearchParams("");
+  };
 
+  return (
     <div>
       <form className="search-area">
         <div className="search-container">
-          <input
-            type="text"
-            value={search}
-            onChange={handleSearchChange}
-            placeholder="Search for a smartphone..."
-            className="search-input"
-          />
+          <div className="search-input-wrapper">
+            <input
+              type="text"
+              value={search}
+              onChange={handleSearchChange}
+              placeholder="Search for a smartphone..."
+              className="search-input"
+            />
+            {search && (
+              <button
+                type="button"
+                className="clear-button"
+                onClick={handleClearSearch}
+                aria-label="Clear search"
+              >
+                <X size={18} />
+              </button>
+            )}
+          </div>
         </div>
       </form>
     </div>

@@ -24,17 +24,17 @@ export const getProducts = unstable_cache(
   { revalidate }
 );
 
-export const getProductById = unstable_cache( async (id) => {
-  try {
-    const url = `${BASE_API_URL}/products/${id}`;
-    const reponse = await fetchApi(url);
-    return reponse;
-  } catch (error) {
-    console.error(`Error fetching product with ID ${id}:`, error);
-    throw error;
-  }
-},
-(id) =>
-  `getProduct-${id}`,
-{ revalidate }
-)
+export const getProductById = unstable_cache(
+  async (id) => {
+    try {
+      const url = `${BASE_API_URL}/products/${id}`;
+      const reponse = await fetchApi(url);
+      return reponse;
+    } catch (error) {
+      console.error(`Error fetching product with ID ${id}:`, error);
+      throw error;
+    }
+  },
+  (id) => `getProduct-${id}`,
+  { revalidate }
+);

@@ -31,27 +31,27 @@ const fetchApi = async (url, method = "GET", data = null) => {
       throw new ApiError(
         `Request failed with status code ${response.status}`,
         response.status,
-        response.data
+        response.data,
       );
     }
 
     return response.data;
   } catch (error) {
     if (error.response) {
-      console.error('API Error:', error.response.data);
-      console.error('Status Code:', error.response.status);
-      console.error('Headers:', error.response.headers);
+      console.error("API Error:", error.response.data);
+      console.error("Status Code:", error.response.status);
+      console.error("Headers:", error.response.headers);
       throw new ApiError(
-        error.response.data.message || 'API Error',
+        error.response.data.message || "API Error",
         error.response.status,
-        error.response.data
+        error.response.data,
       );
     } else if (error.request) {
-      console.error('API Error: No response received');
-      throw new ApiError('No response from server', 500); 
+      console.error("API Error: No response received");
+      throw new ApiError("No response from server", 500);
     } else {
-      console.error('API Error:', error.message);
-      throw new ApiError(error.message || 'Request failed', 500);
+      console.error("API Error:", error.message);
+      throw new ApiError(error.message || "Request failed", 500);
     }
   }
 };

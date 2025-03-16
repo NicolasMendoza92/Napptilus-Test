@@ -12,30 +12,30 @@ export default function ProductDetail({ product }) {
   const router = useRouter();
   const [similarProducts] = useState(product.similarProducts || []);
   const [selectedColor, setSelectedColor] = useState(
-    product?.colorsOptions?.[0] || null
+    product?.colorsOptions?.[0] || null,
   );
   const [selectedStorage, setSelectedStorage] = useState(null);
   const [addedToCart, setAddedToCart] = useState(false);
   const { addItem } = useCartStore();
 
   const handleAddToCart = () => {
-      if (product && selectedColor !== null && selectedStorage) {
-        addItem({
-          id: product.id,
-          brand: product.brand,
-          name: product.name,
-          price: selectedStorage.price,
-          color: product.colorOptions[selectedColor].name,
-          colorValue: product.colorOptions[selectedColor].hexCode,
-          image: product.colorOptions[selectedColor].imageUrl,
-          storage: selectedStorage.capacity,
-        });
+    if (product && selectedColor !== null && selectedStorage) {
+      addItem({
+        id: product.id,
+        brand: product.brand,
+        name: product.name,
+        price: selectedStorage.price,
+        color: product.colorOptions[selectedColor].name,
+        colorValue: product.colorOptions[selectedColor].hexCode,
+        image: product.colorOptions[selectedColor].imageUrl,
+        storage: selectedStorage.capacity,
+      });
 
-        setAddedToCart(true);
-        setTimeout(() => {
-          setAddedToCart(false);
-        }, 1500);
-      }
+      setAddedToCart(true);
+      setTimeout(() => {
+        setAddedToCart(false);
+      }, 1500);
+    }
   };
 
   const isAddToCartDisabled =
@@ -58,17 +58,20 @@ export default function ProductDetail({ product }) {
         <div className="product-detail">
           <div className="product-detail__container">
             <div className="product-detail__images">
-              <Image
-                src={
-                  product?.colorOptions[selectedColor]?.imageUrl ||
-                  product?.colorOptions[0]?.imageUrl
-                }
-                alt={product.name}
-                fill
-                sizes="(max-width: 768px) 16rem"
-                className="product-detail__image"
-                priority
-              />
+              <div className="product-detail__image-wrapper">
+                <Image
+                  src={
+                    product?.colorOptions[selectedColor]?.imageUrl ||
+                    product?.colorOptions[0]?.imageUrl
+                  }
+                  alt={product.name}
+                  fill
+                   style={{ objectFit: "contain"}}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="product-detail__image"
+                  priority
+                />
+              </div>
             </div>
             <div className="product-detail__info">
               <h1 className="product-detail__name">{product.name}</h1>
@@ -119,28 +122,29 @@ export default function ProductDetail({ product }) {
                 </div>
               </div>
 
-              <button
-                className={`product-detail__button ${
-                  addedToCart ? "product-detail__button--added" : ""
-                }  ${
-                  isAddToCartDisabled ? "product-detail__button--disabled" : ""
-                }`}
-                onClick={handleAddToCart}
-                disabled={isAddToCartDisabled}
-              >
-                {addedToCart ? "ADDED TO CART ✓" : "ADD TO CART"}
-              </button>
+              <div className="product-detail__button-container">
+                <button
+                  className={`product-detail__button ${
+                    addedToCart ? "product-detail__button--added" : ""
+                  }  ${
+                    isAddToCartDisabled
+                      ? "product-detail__button--disabled"
+                      : ""
+                  }`}
+                  onClick={handleAddToCart}
+                  disabled={isAddToCartDisabled}
+                >
+                  {addedToCart ? "ADDED TO CART ✓" : "ADD TO CART"}
+                </button>
+              </div>
             </div>
           </div>
           <ProductSpecs product={product} />
-          {similarProducts?.length > 0 && (
-            <SimilarProducts
-              products={similarProducts}
-              title="SIMILAR PRODUCTS"
-            />
-          )}
         </div>
       </div>
+      {similarProducts?.length > 0 && (
+        <SimilarProducts products={similarProducts} title="SIMILAR PRODUCTS" />
+      )}
     </>
   );
 }

@@ -13,7 +13,6 @@
 }
 
 .back-button {
-  padding: 0.5rem ;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -52,30 +51,66 @@
   }
   
   &__images {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    max-height: 300px;
+    
+    @media (min-width: 768px) {
+      max-height: 400px;
+    }
+
+    @media (min-width: 768px) {
+      max-height: 500px;
+    }
+    
+    @media (min-width: 1024px) {
+      max-height: 400px;
+    }
+
+    @media (min-width: 1248px) {
+      max-height: 600px;
+    }
+  }
+
+  
+  &__image-wrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 1;
-  }
-  &__image {
-    object-fit:contain ;
-    padding: 0rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
 
     @media (max-width: 768px) {
-      padding: 0rem 8rem 0rem 2rem ;
+      padding: 0.5rem;
+    }
+
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto !important;
+    height: auto !important;
+    position: relative !important;
+
+    @media (max-width: 768px) {
+      padding-right: 4rem; 
+      width: auto; 
+      height: 100%; 
+      align-self: flex-start;
     }
   }
   
   &__info {
-    object-fit: contain;
-    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem ;
 
-    @media (min-width: 960px) {
-      padding: 3rem 0rem;
-    }
-
-    @media (min-width: 1280px) {
-      padding: 3rem 4rem;
-    }
   }
   
   &__name {
@@ -122,6 +157,10 @@
     }
   }
   
+  &__button-container {
+    margin-top: auto;
+  }
+
   &__button {
     width: 100%;
     padding: 1rem;
@@ -143,7 +182,8 @@
     }
     
     &--disabled {
-      background-color: $text-secondary;
+      color:#C2BFBC;
+      background-color: $disable-color;
       cursor: not-allowed;
     }
     
@@ -226,6 +266,7 @@
   
   &__value {
     padding: 1rem;
+    font-weight: 300;
     font-size: 0.75rem;
   }
   

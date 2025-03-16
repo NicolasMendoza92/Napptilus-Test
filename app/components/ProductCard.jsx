@@ -4,16 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-export default function ProductCard({ id, brand, name, price, imageUrl }) {
+export default function ProductCard({ id, brand, name, price, imageUrl, hasBorder = false }) {
   return (
     <Link  href={`/product/${id}`}>
-      <div className="product-card">
+      <div className={`product-card ${hasBorder ? "product-card--border" : ""}`}>
         <div className="product-card__image-container">
           <Image
             src={imageUrl}
             alt={'imagen'}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 100vw"
             className="product-card__image"
             priority
           />

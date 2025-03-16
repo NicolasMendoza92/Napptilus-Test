@@ -2,15 +2,21 @@
 
 import { useRef, useEffect, useState } from "react"
 
-export default function Carousel({ children, initialProgress, itemWidth = 280, itemGap = 20, className = "" }) {
+export default function Carousel({ children, initialProgress=0, itemWidth, itemGap, visualIndicator=true, visualIndicatorWidth, className }) {
   const containerRef = useRef(null)
   const progressBarRef = useRef(null)
-  const [scrollProgress, setScrollProgress] = useState(initialProgress)
+  const [scrollProgress, setScrollProgress] = useState(
+    visualIndicator && initialProgress === 0 ? visualIndicatorWidth : initialProgress,
+  )
   const [isLargeScreen, setIsLargeScreen] = useState(false)
+  const [hasScrolled, setHasScrolled] = useState(false)
 
   const handleScroll = () => {
     if (containerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = containerRef.current
+      if (!hasScrolled && scrollLeft > 0) {
+        setHasScrolled(true)
+      }
       const scrollPercentage = (scrollLeft / (scrollWidth - clientWidth)) * 100
       setScrollProgress(scrollPercentage)
     }
@@ -32,6 +38,7 @@ export default function Carousel({ children, initialProgress, itemWidth = 280, i
       left: newScrollPosition,
       behavior: "smooth",
     })
+    setHasScrolled(true)
   }
 
   useEffect(() => {
@@ -39,9 +46,12 @@ export default function Carousel({ children, initialProgress, itemWidth = 280, i
     if (container) {
       container.addEventListener("scroll", handleScroll)
 
-      const scrollableWidth = container.scrollWidth - container.clientWidth
-      const initialScrollPosition = (initialProgress / 100) * scrollableWidth
-      container.scrollLeft = initialScrollPosition
+      if (initialProgress > 0) {
+        const scrollableWidth = container.scrollWidth - container.clientWidth
+        const initialScrollPosition = (initialProgress / 100) * scrollableWidth
+        container.scrollLeft = initialScrollPosition
+        setHasScrolled(true)
+      }
 
       const checkScreenSize = () => {
         setIsLargeScreen(window.innerWidth >= 768) 

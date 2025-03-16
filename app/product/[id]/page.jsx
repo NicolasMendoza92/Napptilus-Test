@@ -7,7 +7,7 @@ export default async function ProductPage({ params }) {
 
   const product = await getProductById(id);
 
-  if (!product) return notFound(); 
+  if (!product) return notFound();
 
   return <ProductDetail product={product} />;
 }

@@ -6,14 +6,14 @@ import ProductCard from "./ProductCard";
 export default function SimilarProducts({
   products,
   title,
-  initialProgress = 3,
 }) {
   return (
     <div className="similar-products">
       <p className="similar-products__title">{title}</p>
       <Carousel
-        initialProgress={initialProgress}
-        className="similar-products__carousel"
+        visualIndicatorWidth={10} 
+        itemWidth={340}
+        className=""
       >
         {products.map((product, index) => (
           <ProductCard
@@ -23,6 +23,7 @@ export default function SimilarProducts({
             name={product.name}
             price={product.basePrice}
             imageUrl={product.imageUrl}
+            hasBorder={true}
           />
         ))}
       </Carousel>

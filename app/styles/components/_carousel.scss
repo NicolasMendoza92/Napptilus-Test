@@ -1,3 +1,5 @@
+@use '../globals' as *;
+
 .carousel {
     position: relative;
     
@@ -15,7 +17,7 @@
     
     &__content {
       display: flex;
-      gap: var(--item-gap, 24px);
+      gap:0;
       padding-bottom: 1rem;
       min-width: min-content;
       
@@ -33,7 +35,7 @@
       &--interactive {
         cursor: pointer;
         height: 4px;
-        background-color: rgba(224, 224, 224, 0.5);
+        background-color:#e0e0e0;
         border-radius: 2px;
         transition: background-color 0.2s ease;
         
@@ -48,13 +50,28 @@
         background-color: #000;
         transition: width 0.3s ease;
         border-radius: 4px;
+
+        &--indicator {
+          opacity: 0.5;
+          background-color: #000; 
+        }
       }
     }
   }
   
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .carousel__progress {
       height: 1px;
+
+      &--interactive {
+        height: 2px;
+        background-color: #000;
+        border-radius: 0;
+        
+        &:hover {
+          background-color: #000;
+        }
+      }
       
       &-bar {
         border-radius: 0;
