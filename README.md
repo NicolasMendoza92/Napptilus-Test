@@ -38,7 +38,7 @@ npm start
 
 Para ejecutar los tests:
 ```bash
-npm test
+npm run test
 ```
 ## Arquitectura y estructura del proyecto
 
