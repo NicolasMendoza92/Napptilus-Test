@@ -41,7 +41,7 @@ export default function Cart() {
       <div className="container">
         <div className="cart-header">
           <p className="cart-header__title">
-            CART{" "}
+            CARRITO{" "}
             <span className="cart-header__count">({cartItems.length})</span>
           </p>
         </div>
@@ -65,10 +65,9 @@ export default function Cart() {
                     </div>
                     <div className="cart-item__content">
                       <div className="cart-item__wrap-details">
-                        <div className="cart-item__name">{item.name}</div>
-                        <div className="cart-item__details">
+                        <div className="cart-item__name" data-testid={`cart-item-name-${item.cartId}`}>{item.name}</div>
+                        <div className="cart-item__details" data-testid={`cart-item-details-${item.cartId}`}>
                           {item.storage} / {item.color}
-                          {item.quantity > 1 ? ` x ${item.quantity}` : ""}
                         </div>
 
                         <div className="cart-item__price">
@@ -79,6 +78,7 @@ export default function Cart() {
                         <button
                           className="cart-item__remove"
                           onClick={() => removeItem(item.cartId)}
+                          data-testid={`remove-item-${item.cartId}`}
                         >
                           Eliminar
                         </button>
@@ -92,8 +92,9 @@ export default function Cart() {
                 <button
                   className="cart__continue"
                   onClick={() => router.push("/")}
+                  data-testid="continue-shopping"
                 >
-                  CONTINUE SHOPPING
+                  CONTINUAR COMPRANDO
                 </button>
                 <div className="cart__total">
                   TOTAL: <span>{totalPrice} EUR</span>
@@ -102,8 +103,9 @@ export default function Cart() {
                   className="cart__pay"
                   onClick={handleCheckout}
                   disabled={isProcessing}
+                  data-testid="pay-button"
                 >
-                  {isProcessing ? "PROCESSING..." : "PAY"}
+                  {isProcessing ? "PROCESANDO..." : "PAGAR"}
                 </button>
               </div>
             </>

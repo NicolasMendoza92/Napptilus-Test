@@ -47,7 +47,7 @@ export default function SearchForm() {
               type="text"
               value={search}
               onChange={handleSearchChange}
-              placeholder="Search for a smartphone..."
+              placeholder="Busca tu smartphone..."
               className="search-input"
             />
             {search && (

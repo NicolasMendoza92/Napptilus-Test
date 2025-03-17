@@ -1,17 +1,25 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 
-
-export default function ProductCard({ id, brand, name, price, imageUrl, hasBorder = false }) {
+export default function ProductCard({
+  id,
+  brand,
+  name,
+  price,
+  imageUrl,
+  hasBorder = false,
+}) {
   return (
-    <Link  href={`/product/${id}`}>
-      <div className={`product-card ${hasBorder ? "product-card--border" : ""}`}>
+    <Link href={`/product/${id}`}>
+      <div
+        className={`product-card ${hasBorder ? "product-card--border" : ""}`}
+      >
         <div className="product-card__image-container">
           <Image
             src={imageUrl}
-            alt={'imagen'}
+            alt={"imagen"}
             fill
             sizes="(max-width: 768px) 100vw"
             className="product-card__image"
@@ -19,10 +27,22 @@ export default function ProductCard({ id, brand, name, price, imageUrl, hasBorde
           />
         </div>
         <div className="product-card__content">
-          <div className="product-card__brand">{brand}</div>
+          <div className="product-card__brand" data-testid={`brand-name-${id}`}>
+            {brand}
+          </div>
           <div className="product-card__info">
-            <span className="product-card__name">{name}</span>
-            <span className="product-card__price">{price} EUR</span>
+            <span
+              className="product-card__name"
+              data-testid={`product-name-${id}`}
+            >
+              {name}
+            </span>
+            <span
+              className="product-card__price"
+              data-testid={`product-price-${id}`}
+            >
+              {price} EUR
+            </span>
           </div>
         </div>
         <div className="product-card__overlay"></div>

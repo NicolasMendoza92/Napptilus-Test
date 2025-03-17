@@ -8,7 +8,7 @@ export default function LoadingSpinner() {
       <div className="main-content">
         <div className="loading-spinner">
           <ClipLoader size={50} color="#000" />
-          <div className="loading-spinner__text">LOADING...</div>
+          <div className="loading-spinner__text">CARGANDO...</div>
         </div>
       </div>
     </div>

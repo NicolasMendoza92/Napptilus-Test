@@ -1,68 +1,38 @@
+export default function ProductSpecs({ product }) {
+  const specificationsList = [
+    { label: "Marca", key: "brand" },
+    { label: "Nombre", key: "name" },
+    { label: "Descripción", key: "description" },
+    { label: "Bateria", key: "specs.battery" },
+    { label: "OS", key: "specs.os" },
+    { label: "Procesador", key: "specs.processor" },
+    { label: "Resolución", key: "specs.resolution" },
+    { label: "Pantalla", key: "specs.screen" },
+    { label: "Refresco de pantalla", key: "specs.screenRefreshRate" },
+    { label: "Camara selfie", key: "specs.selfieCamera" },
+  ];
 
-export default function ProductSpecs({product}) {
+  const getValue = (obj, path) => {
+    try {
+      return path.split(".").reduce((acc, key) => acc[key], obj);
+    } catch (error) {
+      return null;
+    }
+  };
+
   return (
     <div className="specifications">
-    <h2 className="specifications__title">SPECIFICATIONS</h2>
-    <div className="specifications__table">
-    <div className="specifications__row">
-        <div className="specifications__label">Brand</div>
-        <div className="specifications__value">
-          {product.brand}
-        </div>
-      </div>
-      <div className="specifications__row">
-        <div className="specifications__label">Name</div>
-        <div className="specifications__value">
-          {product.name}
-        </div>
-      </div>
-      <div className="specifications__row">
-        <div className="specifications__label">Description</div>
-        <div className="specifications__value">
-          {product.description}
-        </div>
-      </div>
-      <div className="specifications__row">
-        <div className="specifications__label">Battery</div>
-        <div className="specifications__value">
-          {product.specs?.battery}
-        </div>
-      </div>
-      <div className="specifications__row">
-        <div className="specifications__label">OS</div>
-        <div className="specifications__value">{product.specs?.os}</div>
-      </div>
-      <div className="specifications__row">
-        <div className="specifications__label">Processor</div>
-        <div className="specifications__value">
-          {product.specs?.battery}
-        </div>
-      </div>
-      <div className="specifications__row">
-        <div className="specifications__label">Resolution</div>
-        <div className="specifications__value">
-          {product.specs?.resolution}
-        </div>
-      </div>
-      <div className="specifications__row">
-        <div className="specifications__label">Screen</div>
-        <div className="specifications__value">
-          {product.specs?.screen}
-        </div>
-      </div>
-      <div className="specifications__row">
-        <div className="specifications__label">Screen Fresh</div>
-        <div className="specifications__value">
-          {product.specs?.screenRefreshRate}
-        </div>
-      </div>
-      <div className="specifications__row">
-        <div className="specifications__label">Selfie camera</div>
-        <div className="specifications__value">
-          {product.specs?.selfieCamera}
-        </div>
+      <h2 className="specifications__title">ESPECIFICACIONES</h2>
+      <div className="specifications__table">
+        {specificationsList.map((spec) => (
+          <div className="specifications__row" key={spec.label}>
+            <div className="specifications__label">{spec.label}</div>
+            <div className="specifications__value">
+              {getValue(product, spec.key) || "N/A"}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
-  </div>
   );
 }

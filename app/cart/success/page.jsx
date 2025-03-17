@@ -30,24 +30,24 @@ export default function SuccessPage() {
       <div className="success">
         <div className="success__header">
           <CheckCircle className="success__icon" size={32} />
-          <h1 className="success__title">ORDER CONFIRMED</h1>
-          <p className="success__subtitle">Thank you for your purchase! Your order has been confirmed.</p>
+          <h1 className="success__title">ORDEN CONFIRMADA</h1>
+          <p className="success__subtitle">Gracias por tu compra! La orden ha sido confirmada.</p>
         </div>
 
         <div className="success__details">
           <div className="success__info">
             <div className="success__info-item">
-              <span className="success__label">Order number</span>
+              <span className="success__label"># Numero de orden</span>
               <span className="success__value">{orderNumber}</span>
             </div>
             <div className="success__info-item">
-              <span className="success__label">Date</span>
+              <span className="success__label">Fecha</span>
               <span className="success__value">{date}</span>
             </div>
           </div>
 
           <div className="success__summary">
-            <h2 className="success__summary-title">ORDER SUMMARY</h2>
+            <h2 className="success__summary-title">Resumen</h2>
 
             <div className="success__items">
               {items.map((item, index) => (
@@ -81,7 +81,7 @@ export default function SuccessPage() {
 
         <div className="success__footer">
           <button className="success__continue" onClick={() => router.push("/")}>
-            CONTINUE SHOPPING
+            CONTINUAR COMPRANDO
           </button>
         </div>
       </div>

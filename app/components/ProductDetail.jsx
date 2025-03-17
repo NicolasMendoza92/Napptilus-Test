@@ -51,7 +51,7 @@ export default function ProductDetail({ product }) {
             aria-label="Go back"
           >
             <ArrowLeft size={24} />
-            BACK
+            VOLVER
           </button>
         </div>
 
@@ -66,23 +66,22 @@ export default function ProductDetail({ product }) {
                   }
                   alt={product.name}
                   fill
-                   style={{ objectFit: "contain"}}
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw"
                   className="product-detail__image"
                   priority
                 />
               </div>
             </div>
             <div className="product-detail__info">
-              <h1 className="product-detail__name">{product.name}</h1>
-              <div className="product-detail__price">
+              <h1 className="product-detail__name" data-testid={`product-name-${product.id}`}>{product.name}</h1>
+              <div className="product-detail__price" data-testid={`product-price-${product.id}`}>
                 {selectedStorage ? selectedStorage.price : product.basePrice}{" "}
                 EUR
               </div>
 
               <div className="product-detail__storage">
                 <div className="product-detail__section-title">
-                  STORAGE ¿HOW MUCH SPACE DO YOU NEED?
+                  ALMACENAMIENTO ¿CUANTO ESPACIO NECESITAS?
                 </div>
                 <div className="product-detail__storage-options">
                   {product.storageOptions.map((option) => (
@@ -103,7 +102,7 @@ export default function ProductDetail({ product }) {
 
               <div className="product-detail__colors">
                 <div className="product-detail__section-title">
-                  COLOR, PICK YOUR FAVORITE
+                  COLOR, ELIJE TU FAVORITO
                 </div>
                 <div className="product-detail__colors-options">
                   {product.colorOptions.map((color, index) => (
@@ -114,6 +113,7 @@ export default function ProductDetail({ product }) {
                       }`}
                       style={{ backgroundColor: color.hexCode }}
                       onClick={() => setSelectedColor(index)}
+                      data-testid={`button-color-${color.name.replace(/\s/g, "")}`}
                     ></button>
                   ))}
                 </div>
@@ -134,7 +134,7 @@ export default function ProductDetail({ product }) {
                   onClick={handleAddToCart}
                   disabled={isAddToCartDisabled}
                 >
-                  {addedToCart ? "ADDED TO CART ✓" : "ADD TO CART"}
+                  {addedToCart ? "AÑADIDO ✓" : "AÑADIR"}
                 </button>
               </div>
             </div>
@@ -143,7 +143,7 @@ export default function ProductDetail({ product }) {
         </div>
       </div>
       {similarProducts?.length > 0 && (
-        <SimilarProducts products={similarProducts} title="SIMILAR PRODUCTS" />
+        <SimilarProducts products={similarProducts} title="PRODUCTOS SIMILARES" />
       )}
     </>
   );
