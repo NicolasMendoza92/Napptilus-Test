@@ -33,12 +33,33 @@ body {
   display: flex;
   flex-direction: column;
   font-family: Helvetica, Arial, sans-serif;
-  min-height: calc(100vh - var(--navbar-height, 70px))
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+// Layout general
+.main-layout {
+  margin-top: var(--navbar-height, 5rem) 
+}
+
+.main-content {
+  margin-top:10rem;
+  padding: 1rem;
+
+  @media (min-width: 768px) {
+    padding: 1rem 1rem;
+  }
+
+  @media (min-width: 1028px) {
+    padding: 0rem 3rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 0rem 6rem;
+  }
 }
 
 .container {
@@ -63,33 +84,12 @@ a {
     padding: 1rem;
   }
   
-  @media (min-width: 1024px) {
-    padding: 1rem 4.25rem;
+  @media (min-width: 960px) {
+    padding: 1.5rem 2.5rem;
   }
   
   @media (min-width: 1280px) {
     padding: 1.5rem 6.25rem;
-  }
-}
-
-.main-layout {
-  margin-top: var(--navbar-height, 5rem) 
-}
-
-.main-content {
-  margin-top:10rem;
-  padding: 1rem;
-
-  @media (min-width: 768px) {
-    padding: 1rem 1rem;
-  }
-
-  @media (min-width: 1028px) {
-    padding: 0rem 3rem;
-  }
-
-  @media (min-width: 1280px) {
-    padding: 0rem 6rem;
   }
 }
 

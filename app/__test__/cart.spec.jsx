@@ -1,6 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { useCartStore } from "../hooks/cartStore";
-import { useRouter } from "next/navigation";
 import { getOrderDate, getRandonNumberOrder } from "../utils/utils";
 import { mockCartItems } from "./mocks";
 import Cart from "../cart/page";
@@ -80,28 +79,31 @@ describe("Cart Component", () => {
 
     expect(useRouterMock.push).toHaveBeenCalledWith("/");
   });
+
+  it("debería llamar a clearCart y router.push al hacer clic en 'PAY'", async () => {
+    jest.useFakeTimers();
   
-
-//   it("debería llamar a clearCart y router.push al hacer clic en 'PAY'", async () => {
-//     const clearCartMock = jest.fn();
-
-//     useCartStore.mockReturnValue({
-//       items: mockCartItems,
-//       removeItem: jest.fn(),
-//       clearCart: clearCartMock,
-//     });
-
-//     render(<Cart />);
-
-//     const payButton = screen.getByTestId("pay-button");
-//     fireEvent.click(payButton);
-
-//     expect(clearCartMock).toHaveBeenCalled();
-
-//     await waitFor(() => {
-//       expect(useRouterMock.push).toHaveBeenCalledWith("/cart/success");
-//     });
-//   });
+    const clearCartMock = jest.fn();
+    useCartStore.mockReturnValue({
+      items: mockCartItems,
+      removeItem: jest.fn(),
+      clearCart: clearCartMock,
+    });
+  
+    render(<Cart />);
+  
+    const payButton = screen.getByTestId("pay-button");
+    fireEvent.click(payButton);
+  
+    jest.advanceTimersByTime(2000);
+  
+    await waitFor(() => {
+      expect(clearCartMock).toHaveBeenCalled();
+      expect(useRouterMock.push).toHaveBeenCalledWith("/cart/success");
+    });
+  
+    jest.useRealTimers();
+  });
 
   it("debería mostrar 'PROCSANDO...' mientras se está procesando el pago", () => {
     useCartStore.mockReturnValue({
