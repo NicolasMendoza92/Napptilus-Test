@@ -9,13 +9,12 @@ export default function ProductCard({
   name,
   price,
   imageUrl,
-  hasBorder = false,
+
 }) {
   return (
     <Link href={`/product/${id}`}>
       <div
-        className={`product-card ${hasBorder ? "product-card--border" : ""}`}
-      >
+        className="product-card">
         <div className="product-card__image-container">
           <Image
             src={imageUrl}

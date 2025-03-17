@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import ProductDetail from "../components/ProductDetail";
 import { mockProduct } from "./mocks";
-import { useCartStore } from "../hooks/cartStore";
+import { useCartStore } from "../store/cartStore";
 
 jest.mock("../hooks/cartStore", () => ({
   useCartStore: jest.fn(() => ({

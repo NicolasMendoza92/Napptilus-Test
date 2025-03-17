@@ -9,9 +9,9 @@ export default function Error({ error, reset }) {
       <div className="error-page__icon">
         <AlertTriangle size={64} />
       </div>
-      <h1 className="error-page__title">Something went wrong!</h1>
+      <h1 className="error-page__title">Ups! Algo salió mal :(</h1>
       <p className="error-page__message">
-        We apologize for the inconvenience. An unexpected error has occurred.
+        Se ha producido un erro inesperado. Disulpe las molestias.
         {process.env.NODE_ENV === "development" && (
           <span className="error-page__dev-message">
             <br />
@@ -21,7 +21,7 @@ export default function Error({ error, reset }) {
         )}
       </p>
       <button onClick={() => reset()} className="error-page__button">
-        Try again
+        Intentalo de nuevo
       </button>
     </div>
   </div>

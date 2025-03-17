@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { useCartStore } from "../hooks/cartStore";
+import { useCartStore } from "../store/cartStore";
 import SimilarProducts from "./SimilarProducts";
 import ProductSpecs from "./ProductSpecs";
 

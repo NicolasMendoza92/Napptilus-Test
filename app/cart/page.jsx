@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useCartStore } from "../hooks/cartStore";
+import { useCartStore } from "../store/cartStore";
 import { getOrderDate, getRandonNumberOrder } from "../utils/utils";
 
 export default function Cart() {
@@ -46,7 +46,7 @@ export default function Cart() {
           </p>
         </div>
         <div className="cart">
-          {cartItems.length === 0 ? (
+          {!cartItems.length ? (
             <></>
           ) : (
             <>

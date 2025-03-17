@@ -16,7 +16,6 @@ export default function SimilarProducts({ products, title }) {
             name={product.name}
             price={product.basePrice}
             imageUrl={product.imageUrl}
-            hasBorder={true}
           />
         ))}
       </Carousel>

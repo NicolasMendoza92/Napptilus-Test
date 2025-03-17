@@ -1,8 +1,8 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { useCartStore } from "../hooks/cartStore";
 import { getOrderDate, getRandonNumberOrder } from "../utils/utils";
 import { mockCartItems } from "./mocks";
 import Cart from "../cart/page";
+import { useCartStore } from "../store/cartStore";
 
 jest.mock("../hooks/cartStore", () => ({
   useCartStore: jest.fn(() => ({

@@ -3,7 +3,7 @@
 import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useCartStore } from "../hooks/cartStore";
+import { useCartStore } from "../store/cartStore";
 import { ClipLoader } from "react-spinners";
 
 export default function CartIndicator() {
