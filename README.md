@@ -48,7 +48,7 @@ El proyecto sigue una arquitectura modular y desacoplada:
 
 * lib/: Incluye utilidades genéricas como fetchApi.js para manejar las solicitudes a la API y guardado de las consultas en unestable_cache.
 
-* hooks/: Contiene cartStore.js, un store global manejado con Zustand para gestionar el carrito sin re-renderizaciones innecesarias.
+* store/: Contiene cartStore.js, un store global manejado con Zustand para gestionar el carrito evitando re-renderizaciones innecesarias.
 
 * styles/: Contiene los archivos de estilos escritos en SCSS.
 
