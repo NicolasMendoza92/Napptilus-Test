@@ -27,14 +27,6 @@ const fetchApi = async (url, method = "GET", data = null) => {
 
     const response = await axios(config);
 
-    if (response.status >= 400) {
-      throw new ApiError(
-        `Request failed with status code ${response.status}`,
-        response.status,
-        response.data,
-      );
-    }
-
     return response.data;
   } catch (error) {
     if (error.response) {
