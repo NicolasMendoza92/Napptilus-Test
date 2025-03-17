@@ -76,7 +76,7 @@ describe("ProductDetail Component", () => {
     expect(colorButton.closest("button")).toHaveClass("color-option--active");
   });
 
-  it("debería llamar a addItem del store del carrito al hacer clic en 'ADD TO CART'", () => {
+  it("debería llamar a addItem del store del carrito al hacer clic en 'AÑADIR'", () => {
     const addItemMock = jest.fn();
     useCartStore.mockReturnValue({ addItem: addItemMock });
 
@@ -95,7 +95,7 @@ describe("ProductDetail Component", () => {
     );
     fireEvent.click(colorButton);
 
-    const addToCartButton = screen.getByText("ADD TO CART");
+    const addToCartButton = screen.getByText("AÑADIR");
     fireEvent.click(addToCartButton);
 
     expect(addItemMock).toHaveBeenCalledWith({
@@ -113,7 +113,7 @@ describe("ProductDetail Component", () => {
   it("debería mostrar la lista de productos similares si existen", () => {
     render(<ProductDetail product={mockProduct} />);
 
-    const similarProductsTitle = screen.getByText("SIMILAR PRODUCTS");
+    const similarProductsTitle = screen.getByText("PRODUCTOS SIMILARES");
     expect(similarProductsTitle).toBeInTheDocument();
     const firstProductName = mockProduct.similarProducts[0].name;
     expect(screen.getByText(firstProductName)).toBeInTheDocument();

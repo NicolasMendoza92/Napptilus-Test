@@ -66,7 +66,7 @@ describe("Cart Component", () => {
     expect(removeItemMock).toHaveBeenCalledWith("1");
   });
 
-  it("debería llamar a router.push al hacer clic en 'CONTINUE SHOPPING'", () => {
+  it("debería llamar a router.push al hacer clic en 'CONTINUA COMPRANDO'", () => {
     useCartStore.mockReturnValue({
       items: mockCartItems,
       removeItem: jest.fn(),
@@ -103,7 +103,7 @@ describe("Cart Component", () => {
 //     });
 //   });
 
-  it("debería mostrar 'PROCESSING...' mientras se está procesando el pago", () => {
+  it("debería mostrar 'PROCSANDO...' mientras se está procesando el pago", () => {
     useCartStore.mockReturnValue({
       items: mockCartItems,
       removeItem: jest.fn(),
@@ -115,6 +115,6 @@ describe("Cart Component", () => {
     const payButton = screen.getByTestId("pay-button");
     fireEvent.click(payButton);
 
-    expect(payButton).toHaveTextContent("PROCESSING...");
+    expect(payButton).toHaveTextContent("PROCESANDO...");
   });
 });
