@@ -3,7 +3,7 @@ Proyecto desarrollado con Next.js y JavaScript.
 
  ## Requisitos
 
-Asegúrate de tener instalado:
+Tener instalado:
 
  - Node.js (versión recomendada: 18.x o superior)
 
@@ -44,11 +44,11 @@ npm run test
 
 El proyecto sigue una arquitectura modular y desacoplada:
 
-* services/: Contiene la lógica y las llamadas al backend. Las peticiones HTTP se manejan a través de fetchApi.js en lib/, utilizando axios.
+* services/: Contiene la lógica y las llamadas al backend. Las peticiones HTTP se manejan a través de fetchApi.js en lib/, utilizando *axios*.
 
 * lib/: Incluye utilidades genéricas como fetchApi.js para manejar las solicitudes a la API y guardado de las consultas en unestable_cache.
 
-* store/: Contiene cartStore.js, un store global manejado con Zustand para gestionar el carrito evitando re-renderizaciones innecesarias.
+* store/: Contiene cartStore.js, un store global manejado con *Zustand* para gestionar el carrito evitando re-renderizaciones innecesarias.
 
 * styles/: Contiene los archivos de estilos escritos en SCSS.
 
@@ -58,5 +58,4 @@ El proyecto sigue una arquitectura modular y desacoplada:
 
 Configura la variable de entorno *NEXT_PUBLICK_API_KEY* en un archivo .env (Clave autenticación para API)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs) - sobre Next.js features y API.
