@@ -1,10 +1,10 @@
-@use '../globals' as *;
+@use "../globals" as *;
 
 .product-card {
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  outline: 0.5px solid #000000; 
+  outline: 0.5px solid #000000;
   transition: transform 0.5s;
   position: relative;
   overflow: hidden;
@@ -15,44 +15,44 @@
     border: 0.25px solid $border-dark;
     outline: none;
   }
-  
+
   &:hover {
     .product-card__overlay {
       transform: translateY(0);
     }
-    
+
     .product-card__content {
       color: $text-white;
       background-color: transparent;
     }
-    
+
     .product-card__image {
       z-index: 3;
     }
-    
+
     .product-card__brand {
       color: $text-white;
     }
   }
-  
+
   &__image-container {
     position: relative;
     width: 100%;
     aspect-ratio: 1;
     z-index: 2;
   }
-  
+
   &__image {
     object-fit: contain;
   }
-  
+
   &__content {
     padding: 0.5rem 1rem;
     position: relative;
     z-index: 4;
     transition: background-color 0.5s ease, color 0.5s ease;
   }
-  
+
   &__brand {
     font-size: 0.75rem;
     color: $text-secondary;
@@ -60,26 +60,39 @@
     transition: color 0.5s ease;
     text-transform: uppercase;
   }
-  
+
   &__name {
     font-size: 0.875rem;
     font-weight: 500;
     text-transform: uppercase;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-  
+
   &__info {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.75rem;
   }
-  
-  &__model,
-  &__price {
+
+  &__model {
     font-weight: 400;
     font-size: 0.875rem;
   }
-  
+  &__price {
+    font-weight: 400;
+    font-size: 0.875rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
   &__overlay {
     position: absolute;
     top: 0;
@@ -92,4 +105,3 @@
     transition: transform 0.5s ease;
   }
 }
-
